@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/style.css">
+  <title>Card Manager - Sistema de Tarjetas de Parqueo</title>
+</head>
+<body>
+  <div class="container">
+
+    <header class="header">
+      <h1>Card Manager</h1>
+      <p>Sistema de Gestión de Tarjetas de Parqueo</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-button active" data-tab="consulta">Consultar</button>
+      <button class="tab-button" data-tab="actualizar">Actualizar</button>
+      <button class="tab-button" data-tab="registro">Registrar</button>
+    </nav>
+
+    <main class="tab-content">
+
+      <section id="consulta" class="tab-panel active">
+        <h2>Consultar Información</h2>
+        <!--Search Forms-->
+        <div class="search-form">
+          <div class="form-group">
+            <label>Buscar por:</label>
+            <select id="searchType">
+              <option value="user">ID de Usuario</option>
+              <option value="card">Número de Tarjeta</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" id="searchInput" placeholder="Ingrese ID de usuario o número de tarjeta">
+            <button onclick="buscarInformacion()">Buscar</button>
+          </div>
+        </div>
+
+        <div id="resultadoConsulta" class="result-card hidden">
+          <!-- Here will be the result of the search from the api-->
+        </div>
+      </section>
+
+      <!-- UPDATE TAB -->
+      <section id="actualizar" class="tab-panel">
+        <h2>Actualizar Información</h2>
+        
+        <div class="search-form">
+          <div class="form-group">
+            <label>Buscar por:</label>
+            <select id="updateSearchType">
+              <option value="card">Número de Tarjeta</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <input type="text" id="updateSearchInput" placeholder="Ingrese ID de usuario">
+            <button onclick="buscarParaActualizar()"> Buscar</button>
+          </div>
+        </div>
+
+        <div id="formularioActualizar" class="update-form hidden">
+          <!-- Here will be the form of the update from the api-->
+        </div>
+      </section>
+
+      <section id="registro" class="tab-panel">
+        <h2>Registrar Nueva Tarjeta</h2>
+        
+        <form id="registroForm" class="registro-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="id_user">ID de Usuario *</label>
+              <input type="text" id="id_user" name="id_user" required placeholder="Mínimo 13 dígitos">
+            </div>
+            
+            <div class="form-group">
+              <label for="full_name">Nombre Completo *</label>
+              <input type="text" id="full_name" name="full_name" required placeholder="Nombre completo del usuario">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="card_number">Número de Tarjeta *</label>
+              <input type="text" id="card_number" name="card_number" required placeholder="6-8 dígitos">
+            </div>
+            
+            <div class="form-group">
+              <label for="state">Estado</label>
+              <select id="state" name="state">
+                <option value="active">Activa</option>
+                <option value="inactive">Inactiva</option>
+                <option value="expired">Expirada</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="car_plate">Placa del Vehículo *</label>
+              <input type="text" id="car_plate" name="car_plate" required placeholder="6-8 caracteres">
+            </div>
+            
+            <div class="form-group">
+              <label for="brand">Marca del Vehículo *</label>
+              <input type="text" id="brand" name="brand" required placeholder="Marca del vehículo">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="authorization_document">Documento de Autorización (PDF) *</label>
+            <input type="file" id="authorization_document" name="authorization_document" accept=".pdf" required>
+          </div>
+
+          <div class="button-container">
+            <button type="submit" class="submit-btn">💾 Registrar Tarjeta</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <!-- Loading and Message -->
+    <div id="loading" class="loading hidden">⏳ Cargando...</div>
+    <div id="message" class="message hidden"></div>
+  </div>
+
+  <script src="src/main.js"></script>
+</body>
+</html>
