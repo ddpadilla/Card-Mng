@@ -135,7 +135,7 @@ function mostrarResultado(data) {
       <div class="info-item"><label>Marca del Vehículo</label><div class="value">${data.brand || 'N/A'}</div></div>
       <div class="info-item"><label>Fecha de Creación</label><div class="value">${formatDate(data.created)}</div></div>
       <div class="info-item"><label>Fecha de Actualización</label><div class="value">${formatDate(data.updated)}</div></div>
-      <div class="info-item"><label>Documento</label><div class="value">${data.authorization_document ? `<a href="http://127.0.0.1:8000${data.authorization_document}" target="_blank" class="document-link">📄 Ver Documento</a>` : 'N/A'}</div></div>
+      <div class="info-item"><label>Documento</label><div class="value">${data.authorization_document ? `<a href="http://174.138.77.158${data.authorization_document}" target="_blank" class="document-link">📄 Ver Documento</a>` : 'N/A'}</div></div>
     </div>`;
   elements.resultadoConsulta.innerHTML = html;
   elements.resultadoConsulta.classList.remove('hidden');
