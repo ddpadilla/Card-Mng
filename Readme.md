@@ -1,12 +1,17 @@
 # Card Manager
 API para gestionar el registro, consulta y actualización de tarjetas de parqueo asignadas a proveedores de y empleados de una organizacion.
 
+## (El Problema)
+Este proyecto nace de una experiencia real en uno de mis trabajos anteriores en una de mis responsabilidades era la gestion de tarjetas de parqueo, cada tarjeta conllevaba una firma autorizadora en fisico y se archivaba, lo que generaba demoras significativas cuando se buscaba el documento fisico adicional riesgo de pérdida de información. Card Manager es la solución que diseñé y construí para digitalizar este flujo, centralizando la información al alcance de un click de los documentos, asegurando la integridad de los datos con transacciones ACID y proveyendo acceso instantáneo a los registros de aprobación.
+
 ## Características Principales
-- **Transactions ACID**: Todas las operaciones de registro y actualización utilizan transacciones atómicas
-- **Modelos normalizados**: Modelos de datos normalizados en su tercera forma normal 3FN para la base de datos.
-- **Arquitectura RESTful**: API diseñada siguiendo principios REST
-- **Gestión de archivos**: Subida y almacenamiento seguro de documentos PDF
-- **Interfaz web interactiva**: Frontend funcional para gestión de datos
+- **Integridad de Datos Garantizada**: Operaciones atómicas con transacciones ACID que previenen datos corruptos o inconsistentes (o todo se guarda, o no se guarda nada).
+- **Base de Datos Eficiente**: Diseño normalizado (3FN) que evita la redundancia y asegura la consistencia de los datos.
+- **API Estándar y Escalable**: Una API RESTful que sigue las mejores prácticas de la industria para una fácil integración.
+- **Gestión Segura de Archivos**: Subida y almacenamiento seguro de documentos PDF para un registro de auditoría completo.
+- **Interfaz Web Interactiva**: Un cliente ligero y funcional construido con Vanilla JS para la gestión de datos.
+- **Arquitectura de Producción Real**: Despliegue profesional del backend en un servidor Linux (DigitalOcean) y frontend en Vercel.
+
 
 ## Tecnologías
 
@@ -33,25 +38,7 @@ API para gestionar el registro, consulta y actualización de tarjetas de parqueo
 
 ### Instalación Rápida
 
-1. **Clonar el repositorio**
-```bash
-git clone <url-del-repositorio>
-cd Proyecto\ Card
-```
-
-2. **Configurar entorno virtual**
-```bash
-cd Backend
-python -m venv venv
-
-# Activar entorno virtual
-# En Windows:
-venv\Scripts\activate
-# En macOS/Linux:
-source venv/bin/activate
-```
-
-3. **Instalar dependencias**
+1. **Uso dependencias**
 ```bash
 pip install django djangorestframework django-cors-headers python-decouple
 ```
@@ -65,43 +52,6 @@ CORS_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:5173
 ALLOWED_HOSTS=localhost,127.0.0.1
 ```
 
-5. **Ejecutar migraciones**
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
-
-6. **Crear superusuario (opcional)**
-```bash
-python manage.py createsuperuser
-```
-
-7. **Ejecutar servidor de desarrollo**
-```bash
-python manage.py runserver
-```
-
-La API estará disponible en: `http://localhost:8000/`
-
-### Comandos Esenciales
-
-```bash
-# Activar entorno virtual
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
-
-# Ejecutar servidor
-python manage.py runserver
-
-# Crear/aplicar migraciones
-python manage.py makemigrations
-python manage.py migrate
-
-# Acceder al shell de Django
-python manage.py shell
-
-```
-
 ### Frontend
 
 Para el frontend (ubicado en `Frontend/front-card/`):
@@ -110,14 +60,7 @@ Para el frontend (ubicado en `Frontend/front-card/`):
 # Navegar al directorio del frontend
 cd Frontend/front-card
 
-# Instalar dependencias
-npm install
-
-# Ejecutar servidor de desarrollo
-npm run dev
 ```
-
-El frontend estará disponible en: `http://localhost:5173/`
 
 ### Estructura del Proyecto
 ```
@@ -206,11 +149,11 @@ Las entidades de la base de datos se encuentran normalizadas en su tercera forma
 - Validación de extensión de archivo implementada
 
 
-
 ## 🚀 API Endpoints
 
 ### Base URL
-`http://localhost:8000/api/`
+- **🌐 Producción**: `https://servertest1.me/api/`
+- **💻 Desarrollo**: `http://localhost:8000/api/`
 
 ### Características de la API
 - **Transacciones ACID**: Todas las operaciones de registro y actualización utilizan `@transaction.atomic`
@@ -285,15 +228,15 @@ Las entidades de la base de datos se encuentran normalizadas en su tercera forma
 
 ```bash
 # Registro
-POST http://localhost:8000/api/register/
+POST https://servertest1.me/api/register/
 
 # Consultas
-GET http://localhost:8000/api/user/1234567890123/
-GET http://localhost:8000/api/card/123456/
+GET https://servertest1.me/api/user/1234567890123/
+GET https://servertest1.me/api/card/123456/
 
 # Actualizaciones
-PUT http://localhost:8000/api/update/user/1234567890123/
-PUT http://localhost:8000/api/update/card/123456/
+PUT https://servertest1.me/api/update/user/1234567890123/
+PUT https://servertest1.me/api/update/card/123456/
 ```
 
 ### Códigos de Respuesta
