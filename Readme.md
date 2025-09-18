@@ -96,6 +96,9 @@ Proyecto Card/
 ## 📊 Modelos de Datos
 Las entidades de la base de datos se encuentran normalizadas en su tercera forma normal 3FN
 
+<img width="671" height="379" alt="image" src="https://github.com/user-attachments/assets/11cd14a0-2e98-43a6-8823-f6b246bd1d7a" />
+
+
 ### 👤 Usuario (User)
 ```python
 - id_user (PK)                # Número de identidad (mínimo 13 dígitos)
