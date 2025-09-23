@@ -29,6 +29,11 @@ Este proyecto nace de una experiencia real en uno de mis trabajos anteriores en 
 - **CSS3**: Estilos responsivos
 - **Vite**: Bundler y servidor de desarrollo
 
+## Numeros Tarjeta para consultas y Pruebas
+- **123456**
+- **132451**
+- **456789**
+
 
 ## ⚙️ Configuración e Instalación
 
